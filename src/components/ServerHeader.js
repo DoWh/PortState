@@ -11,11 +11,11 @@ function ServerHeader(){
         }
     });
     return (    
-        <header className="flex justify-between p-4 border-b-2 text-xl">
-            <div className="basis-1/4 text-right p-1 opacity-25 select-none mt-6">My ip:</div>
-            <div className="basis-1/4 p-1 select-all mt-6">{myIp}</div>
-            <div className="basis-1/2 justify-self-end p-1">
-                <img src="/img/add.png" className="cursor-pointer float-right p-2 w-16"/>
+        <header className="flex flex-row items-center border-b-2 text-xl" >
+            <div className="ml-4 p-1 opacity-25 select-none">My ip:</div>
+            <div className="p-1 select-all">{myIp}</div>
+            <div className="p-1 ml-auto">
+                <img src="/img/add.png" className="cursor-pointer w-12 m-2 mr-4"/>
             </div>
         </header>
     )

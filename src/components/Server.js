@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import ServerHeader from "./ServerHeader";
+import PortUnitList from "./PortUnitList";
 
 function Server(){
     return (
         <>
             <ServerHeader/>
+            <PortUnitList/>
         </>
     )
 }
