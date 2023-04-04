@@ -11,7 +11,7 @@ const createMainWindow = () => {
         //     preload: path.join(__dirname, 'preload.js')
         // },
         width: (isDev) ? 1000 : 400,
-        height: 400,
+        height: 800,
         webPreferences: {
             nodeIntegration: true
         }
