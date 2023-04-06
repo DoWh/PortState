@@ -10,7 +10,7 @@ function PortUnitList(){
     //action for add new PortUnit
     function addUnit(){
         setUnits([...units, {
-            id: unitCount
+            id: unitCount,
         }]);
         setUnitCount(unitCount+1)
     }
@@ -22,7 +22,10 @@ function PortUnitList(){
     return (
         <div>
             {units.map( unit => 
-                <PortUnit key={unit.id} onClick={removeUnit.bind(null,unit.id)} />
+                <PortUnit 
+                    key={unit.id}
+                    onRemove={removeUnit.bind(null, unit.id)}
+                />
             )}
             <PortUnitAddBtn onClick={addUnit}/>
         </div>
