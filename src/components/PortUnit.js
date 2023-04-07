@@ -1,18 +1,26 @@
 import React, { useState } from "react";
 
-async function toggleTCP(port){
-    console.log(`toggleTCP port ${port}`)
-    console.log(await window.electron.toggleTCP(port))
-}
-
-async function toggleUDP(port){
-    console.log(`toggleTCP port ${port}`)
-    console.log(await window.electron.toggleUDP(port))
-}
-
 function PortUnit(props){
 
     const [port,setPort] = useState()
+
+    async function toggleTCP(event){
+        console.log(`toggleTCP port ${port}`)
+        if (event.target.checked) {
+            window.electron.startTCP(port)
+        } else {
+            window.electron.stopTCP(port)
+        }
+    }
+
+    async function toggleUDP(event){
+        console.log(`toggleTCP port ${port}`)
+        if (event.target.checked) {
+            window.electron.startUDP(port)
+        } else {
+            window.electron.stopUDP(port)
+        }
+    }
 
     //input port controller
     function changePort(event){
@@ -38,7 +46,7 @@ function PortUnit(props){
                 <input 
                     type="checkbox" 
                     className="sr-only peer"
-                    onChange={toggleTCP.bind(null, port)}
+                    onChange={toggleTCP}
                 />
                 <div className="w-11 h-6 bg-gray-200 rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-green-400">
                 </div>
@@ -48,7 +56,7 @@ function PortUnit(props){
                 <input 
                     type="checkbox" 
                     className="sr-only peer"
-                    onChange={toggleUDP.bind(null, port)}
+                    onChange={toggleUDP}
                 />
                 <div className="w-11 h-6 bg-gray-200 rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-green-400">
                 </div>

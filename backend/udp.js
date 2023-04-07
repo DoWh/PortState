@@ -1,23 +1,21 @@
 const dgram = require('dgram')
 
-let poolUDP = new Map();
+module.exports = new class UDP {
 
-function toggle(event,port){
-    if (poolUDP.has(port)){
-        let server = poolUDP.get(port)
+    static pool = new Map();
+
+    start( _ ,port){
+        const server = dgram.createSocket('udp4')
+        server.bind(port)
+        server.on('listening', () => {
+            console.log('UDP Server is running on port ' + port +'.');
+        })
+        UDP.pool.set(port, server)
+    }
+    stop( _ ,port){
+        let server = UDP.pool.get(port)
         server.close()
         console.log('UDP Server is turn off on port ' + port +'.');
-        poolUDP.delete(port)
-        return false;
+        UDP.pool.delete(port)
     }
-
-    const server = dgram.createSocket('udp4')
-    server.bind(port)
-    server.on('listening', () => {
-        console.log('UDP Server is running on port ' + port +'.');
-    })
-    poolUDP.set(port, server)
-    return true;
 }
-
-module.exports = {toggle}

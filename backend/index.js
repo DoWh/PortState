@@ -19,9 +19,11 @@ const createMainWindow = () => {
     win.loadURL('http://localhost:3000');
 
     if (isDev) win.webContents.openDevTools()
-    
-    ipcMain.handle('tg-tcp', tcp.toggle)
-    ipcMain.handle('tg-udp', udp.toggle)
+
+    ipcMain.on('start-tcp', tcp.start)
+    ipcMain.on('stop-tcp', tcp.stop)
+    ipcMain.on('start-udp', udp.start)
+    ipcMain.on('stop-udp', udp.stop)
 
 } 
 
