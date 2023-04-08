@@ -9,18 +9,21 @@ function PortUnit(props){
         port: '',
         disabled: 0,
     });
-    
+
     return (
         <section className="flex m-2 border-2 items-center select-none">
             <PortPlaceholder data={data} setData={setData} />
             <ToggleTCP data={data} setData={setData} />
             <ToggleUDP data={data} setData={setData} />
-            <div 
-                className="border ml-auto remove-btn-wrapper"
+            {props.unitHave !== 1 &&
+                <div 
+                className="ml-auto remove-btn-wrapper"
                 onClick={props.onRemove}
-            >
-                <img className="cursor-pointer w-12 m-2 mr-4" src="/img/remove.svg" alt="remove this port unit"/>
-            </div>
+                >
+                    <img className="cursor-pointer w-12 m-2 mr-4" src="/img/remove.svg" alt="remove this port unit"/>
+                </div>
+            }
+            
         </section>
     );
 }

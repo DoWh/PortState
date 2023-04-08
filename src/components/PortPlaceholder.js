@@ -20,7 +20,7 @@ function PortPlaceholder({ data, setData }){
         <div>
             <input 
                 disabled={(data.disabled !== 0)}
-                className="w-20 mt-2 mb-2 ml-2 p-2 focus:border-green-500 focus:ring-green-500 disabled:bg-slate-300 disabled:border-slate-300 rounded-xl text-center" 
+                className="w-20 mt-4 mb-4 ml-2 p-2 focus:border-green-500 focus:ring-green-500 disabled:bg-slate-300 disabled:border-slate-300 rounded-xl text-center" 
                 type="text"
                 onChange={changePort}
             />

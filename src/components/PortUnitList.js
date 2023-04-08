@@ -27,6 +27,7 @@ function PortUnitList(){
         <div>
             {units.map( unit => 
                 <PortUnit 
+                    unitHave={units.length}
                     key={unit.id}
                     onRemove={removeUnit.bind(null, unit.id)}
                 />
