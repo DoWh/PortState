@@ -4,8 +4,12 @@ import PortUnitAddBtn from "./PortUnitAddBtn";
 
 
 function PortUnitList(){
-    const [units, setUnits] = useState([])
-    const [unitCount, setUnitCount] = useState(0)
+    const [units, setUnits] = useState([
+        {
+            id: 0,
+        }
+    ])
+    const [unitCount, setUnitCount] = useState(1)
     
     //action for add new PortUnit
     function addUnit(){
