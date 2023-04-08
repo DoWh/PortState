@@ -5,13 +5,16 @@ import ToggleUDP from "./ToggleUDP";
 
 function PortUnit(props){
 
-    const [port,setPort] = useState()
-    
+    const [data,setData] = useState({
+        port: '',
+        disabled: 0,
+    });
+
     return (
         <section className="flex m-2 border-2 items-center">
-            <PortPlaceholder setPort={setPort} />
-            <ToggleTCP port={port} />
-            <ToggleUDP port={port} />
+            <PortPlaceholder data={data} setData={setData} />
+            <ToggleTCP data={data} setData={setData} />
+            <ToggleUDP data={data} setData={setData} />
             <div 
                 className="border ml-auto remove-btn-wrapper"
                 onClick={props.onRemove}
@@ -19,7 +22,7 @@ function PortUnit(props){
                 <img className="cursor-pointer w-12 m-2 mr-4" src="/img/remove.svg" alt="remove this port unit"/>
             </div>
         </section>
-    )
+    );
 }
 
 

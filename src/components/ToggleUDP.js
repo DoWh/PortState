@@ -1,14 +1,19 @@
 import React from "react";
 
-function ToggleUDP({ port }){
+function ToggleUDP({ data, setData }){
 
     async function toggle( event ){
+        let port = data.port;
         console.log(`toggleTCP port ${port}`)
         if (event.target.checked) {
             window.electron.startUDP(port)
         } else {
             window.electron.stopUDP(port)
         }
+        setData( prev => ({
+            port: prev.port,
+            disabled: (event.target.checked === true) ? prev.disabled + 1 : prev.disabled - 1,
+        }))
     }
 
     return (

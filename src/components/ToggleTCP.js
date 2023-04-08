@@ -1,14 +1,19 @@
 import React from "react";
 
-function ToggleTCP({ port }){
+function ToggleTCP({ data, setData }){
 
     async function toggle( event ){
+        let port = data.port;
         console.log(`toggleTCP port ${port}`)
         if (event.target.checked) {
             window.electron.startTCP(port)
         } else {
             window.electron.stopTCP(port)
         }
+        setData( prev => ({
+            port: prev.port,
+            disabled: (event.target.checked === true) ? prev.disabled + 1 : prev.disabled - 1,
+        }))
     }
 
     return (
