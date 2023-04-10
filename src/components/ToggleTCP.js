@@ -4,9 +4,18 @@ function ToggleTCP({ unit, updateProp }){
 
     async function toggle( event ){
         console.log(`toggleTCP port ${unit.port}`)
+        let online = await window.electron.checkTCP(unit.port);
         if (event.target.checked) {
-            window.electron.startTCP(unit.port)
-            updateProp(unit.id, { tcp: true })
+            if (!online && unit.port !== '') {
+                window.electron.startTCP(unit.port)
+                updateProp(unit.id, { tcp: true, errorTCP: false })
+            } else {
+                //send error! port already use for that app!
+                setTimeout(()=>{
+                    event.target.checked = false;
+                    updateProp(unit.id, {errorTCP: true})
+                } , 500)
+            }
         } else {
             window.electron.stopTCP(unit.port)
             updateProp(unit.id, { tcp: false })
@@ -14,7 +23,7 @@ function ToggleTCP({ unit, updateProp }){
     }
 
     return (
-        <label className="relative items-center cursor-pointer ml-5">
+        <label className="relative items-center cursor-pointer ml-10">
             <input 
                 type="checkbox" 
                 className="sr-only peer"

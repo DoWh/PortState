@@ -4,6 +4,7 @@ import ToggleTCP from "./ToggleTCP";
 import ToggleUDP from "./ToggleUDP";
 import BtnRemoveUnit from "./BtnRemoveUnit";
 import BtnAddUnit from "./BtnAddUnit";
+import AlertWrongPort from "./AlertWrongPort";
 
 function PortUnits(){
 
@@ -13,6 +14,8 @@ function PortUnits(){
         port: '',
         tcp: false,
         udp: false,
+        errorTCP: false,
+        errorUDP: false,
     }]);
 
     //update prop for unit
@@ -35,15 +38,18 @@ function PortUnits(){
             port: '',
             tcp: false,
             udp: false,
+            errorTCP: false,
+            errorUDP: false,
         }])
         setUnitId(unitId+1)
     }
 
     return (
-        <div>
+        <div className="relative">
             {units.map( unit => 
                 <section key={unit.id} className="flex m-2 border-2 items-center select-none">
                     <PortPlaceholder unit={unit} updateProp={updateProp} />
+                    <AlertWrongPort error={unit.errorTCP || unit.errorUDP} />
                     <ToggleTCP unit={unit} updateProp={updateProp} />
                     <ToggleUDP unit={unit} updateProp={updateProp} />
                     <BtnRemoveUnit count={units.length} removeUnit={removeUnit.bind(null, unit.id)}/>

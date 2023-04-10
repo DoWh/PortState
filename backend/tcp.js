@@ -21,4 +21,7 @@ module.exports = new class TCP {
         console.log('TCP Server is turn off on port ' + port +'.');
         TCP.pool.delete(port)
     }
+    check( _ ,port){
+        return TCP.pool.has(port);
+    }
 }

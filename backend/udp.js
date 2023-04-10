@@ -18,4 +18,7 @@ module.exports = new class UDP {
         console.log('UDP Server is turn off on port ' + port +'.');
         UDP.pool.delete(port)
     }
+    check( _ ,port){
+        return UDP.pool.has(port);
+    }
 }

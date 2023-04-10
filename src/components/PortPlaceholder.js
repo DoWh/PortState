@@ -18,7 +18,7 @@ function PortPlaceholder({ unit, updateProp }){
     }
     
     return (
-        <div>
+        <div >
             <input 
                 disabled={ unit.tcp || unit.udp }
                 className="w-20 mt-4 mb-4 ml-2 p-2 focus:border-green-500 focus:ring-green-500 disabled:bg-slate-300 disabled:border-slate-300 rounded-xl text-center" 

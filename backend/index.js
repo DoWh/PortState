@@ -21,9 +21,13 @@ const createMainWindow = () => {
     if (isDev) win.webContents.openDevTools()
 
     ipcMain.on('start-tcp', tcp.start)
-    ipcMain.on('stop-tcp', tcp.stop)
     ipcMain.on('start-udp', udp.start)
+
+    ipcMain.on('stop-tcp', tcp.stop)
     ipcMain.on('stop-udp', udp.stop)
+
+    ipcMain.handle('check-tcp', tcp.check);
+    ipcMain.handle('check-udp', udp.check);
 
 } 
 
