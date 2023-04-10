@@ -27,7 +27,16 @@ function PortUnits(){
         setUnits(copy);
     }
 
-    function removeUnit( id ){
+    async function removeUnit( id ){
+        //finding unit
+        let index = units.findIndex( unit => unit.id === id);
+        let port = units[index].port;
+        //off server before remove unit
+        let onlineTCP = await window.electron.checkTCP(port);
+        let onlineUDP = await window.electron.checkUDP(port);
+        if (onlineTCP) window.electron.stopTCP(port);
+        if (onlineUDP) window.electron.stopUDP(port);
+        //remove unit from list
         let copy = units.filter( unit => unit.id != id )
         setUnits(copy);
     }
@@ -61,12 +70,3 @@ function PortUnits(){
 }
 
 export default PortUnits;
-
-// <div>
-//     <input 
-//         disabled={(data.disabled !== 0)}
-//         className="w-20 mt-4 mb-4 ml-2 p-2 focus:border-green-500 focus:ring-green-500 disabled:bg-slate-300 disabled:border-slate-300 rounded-xl text-center" 
-//         type="text"
-//         onChange={changePort}
-//     />
-// </div>
