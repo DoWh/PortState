@@ -3,5 +3,5 @@
 <img src="https://i.ibb.co/1Qyq6SF/port-State.png">  
 
 <h2>expected update</h2>  
-- auto open port for windows OS  
-* client version for checking IP:port for accessibility  
+- auto open port for windows OS
+- client version for checking IP:port for accessibility
