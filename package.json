@@ -1,5 +1,7 @@
 {
   "main": "backend/index.js",
+  "author": "DoWh",
+  "description": "Soft for work with TCP/UDP ports (add listener)",
   "homepage": "./",
   "name": "port-state",
   "version": "1.0.0",
@@ -8,7 +10,7 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
-    "electron": "^23.2.1",
+    "electron-squirrel-startup": "^1.0.0",
     "flowbite": "^1.6.4",
     "flowbite-react": "^0.4.2",
     "react": "^18.2.0",
@@ -17,12 +19,15 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "BROWSER=none react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
+    "react-start": "BROWSER=none react-scripts start",
+    "react-build": "react-scripts build",
+    "react-test": "react-scripts test",
+    "react-eject": "react-scripts eject",
     "e dev": "electron . dev",
-    "e": "electron ."
+    "e": "electron .",
+    "forge-start": "electron-forge start",
+    "forge-package": "electron-forge package",
+    "forge-make": "electron-forge make"
   },
   "eslintConfig": {
     "extends": [
@@ -43,7 +48,15 @@
     ]
   },
   "devDependencies": {
+    "@electron-forge/cli": "^6.2.1",
+    "@electron-forge/maker-deb": "^6.2.1",
+    "@electron-forge/maker-rpm": "^6.2.1",
+    "@electron-forge/maker-squirrel": "^6.2.1",
+    "@electron-forge/maker-zip": "^6.2.1",
+    "@electron-forge/plugin-auto-unpack-natives": "^6.2.1",
+    "@rabbitholesyndrome/electron-forge-maker-portable": "^0.1.1",
     "autoprefixer": "^10.4.14",
+    "electron": "^23.3.7",
     "postcss": "^8.4.21",
     "tailwindcss": "^3.3.1"
   }
