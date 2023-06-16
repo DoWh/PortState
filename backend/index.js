@@ -12,13 +12,20 @@ const createMainWindow = () => {
         webPreferences: {
             preload: path.join(__dirname, 'preload.js')
         },
-        width: (isDev) ? 1000 : 400,
-        height: 800,
+        width: (isDev) ? 1000 : 450,
+        height: 700,
     })
 
-    win.loadURL('http://localhost:3000');
+    win.setMinimumSize((isDev) ? 1000 : 450, 700)
+
+    win.loadURL(
+        isDev
+          ? 'http://localhost:3000'
+          : `file://${path.join(__dirname, '../build/index.html')}`
+    );
 
     if (isDev) win.webContents.openDevTools()
+    else win.setMenu(null);
 
     ipcMain.on('start-tcp', tcp.start)
     ipcMain.on('start-udp', udp.start)

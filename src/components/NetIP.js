@@ -12,10 +12,11 @@ function NetworkIp(){
     const [myIp, setMyIp] = useState(load);
     //get ip
     useEffect(()=>{
-        return async () => {
+        (async () => {
             let res = await fetch('https://api.ipify.org')
             setMyIp(await res.text())
-        }
+        })()
+        return;
     });
     return (
         <>

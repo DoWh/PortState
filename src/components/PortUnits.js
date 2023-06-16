@@ -22,7 +22,7 @@ function PortUnits(){
     function updateProp( id, prop ){
         let copy = units.slice();
         let index = copy.findIndex( unit => unit.id === id);
-        copy[index] = Object.assign([], copy[index]);
+        copy[index] = Object.assign({}, copy[index]);
         Object.assign(copy[index], prop);
         setUnits(copy);
     }

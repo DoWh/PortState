@@ -1,15 +1,27 @@
-import React from "react";
+import React, {useState} from "react";
+import ErrorImg from '../img/error1.png'
 
 function AlertWrongPort({ error }){
 
+    const [alertData,setAlertData] = useState(false)
+
     if (error) {
         return (
-            <img
-                className="cursor-pointer w-5 ml-2 absolute left-24" 
-                src="/img/error1.png"
-                alt="alert error"
-                onClick={()=>{console.log('click')}}
-            />
+            <div className="w-5 ml-2 absolute left-24">
+                <img
+                    className="cursor-pointer" 
+                    src={ErrorImg}
+                    alt="alert error"
+                    onMouseEnter={() => setAlertData(true)}
+                    onMouseLeave={()=>{
+                        setInterval(setAlertData(false), 10000)
+                    }}
+                    onClick={()=>{console.log('click')}}
+                />
+                {alertData && (
+                    <div className="absolute top-4 border-2 p-2 w-max bg-red-200 rounded-lg z-50">incorrect port or already exist</div>
+                )}
+            </div>
         )
     }
     //  else {
